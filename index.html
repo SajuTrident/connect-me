@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Connect me!</title>
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!--header start-->
+  <header class="header">
+    <div class="header-img">
+      <img class="banner" src="./images/banner.png" alt="" />
+    </div>
+  </header>
+  <!--header end-->
+  <!--body start-->
+  <div class="container">
+    <div class="mail-c">
+      <h2>CONNECT ME!</h2>
+     <form action="javascript:sendmail()"  method="post">
+      <span>Your <span class="txt">name:</span></span>
+      <center>
+      <input type="text" name="name" id="Name" required>
+      </center>
+      <span>Your <span class="txt">email:</span></span>
+      <center>
+      <input type="email" name="email" id="Email" required>
+      </center>
+        <span>Your <span class="txt">language:</span></span>
+      <center>
+      <input type="text" name="language" id="Language" required>
+      </center>
+        <span>Your <span class="txt">number with country code:</span></span>
+      <center>
+      <input type="tel" name="tel" placeholder="Optional" id="Tel">
+      </center>
+      <span>Your <span class="txt">message:</span></span>
+      <center>
+      <textarea name="problem" id="Message"></textarea>
+      </center>
+      <center>
+      <button class="btn" type="submit" >SUBMIT</button>
+      </center>
+     </form>
+      <span class="connect">Connect me at <span class="txt"><a href="#social-c">#social.</a></span></span>
+    </div>
+  </div>
+  <!--body end-->
+  <!--footer start-->
+  <footer class="footer" id="social-c">
+    <div class="copyright">
+      <span>©All <span class="green">copyrights</span> reserved.</span>
+      <span>Designed by <span class="green"><a href="https://sajutrident.blogspot.com">Sajad</a></span>.</span>
+    </div>
+    <div class="social">
+      <img onclick="discord()" class="ic" src="./images/discord.png" />
+      <img onclick="reddit()" class="ic" src="./images/reddit.png" />
+      <img onclick="youtube()" class="ic" src="./images/youtube.png" />
+      <img onclick="github()" class="ic" src="./images/github.png" />
+    </div>
+  </footer>
+  <!--footer end-->
+  <!-- Project -->
+  <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+<script>
+       function sendmail(){
+			var name = $('#Name').val();
+			var email = $('#Email').val();
+			var number = $('#Tel').val();
+			var language = $('#Language').val();
+      var message = $('#Message').val();
+			// var body = $('#body').val();
+			var Body='Name: '+name+'<br>Email: '+email+'<br>Language: '+language+'<br>Telephone: '+number+'<br>Message: '+message;
+			//console.log(name, phone, email, message);
+			Email.send({
+        Host : "smtp.gmail.com",
+        Username : "dev.fivo@gmail.com",
+        Password : "egmbgikwuvmwxtoc",
+				To: 'dev.fivo@gmail.com',
+				From: 'dev.fivo@gmail.com',
+				Subject: "New connect request from "+name,
+				Body: Body
+			}).then(
+				message =>{
+					//console.log (message);
+					if(message=='OK'){
+					alert('Dear '+name+'. Your request submitted successfully.');
+					}
+					else{
+						console.error (message);
+						alert('There is error at sending request. ')
+					}
+				}
+			);
+		}
+</script>
+  <script src="main.js"></script>
+</body>
+</html>
